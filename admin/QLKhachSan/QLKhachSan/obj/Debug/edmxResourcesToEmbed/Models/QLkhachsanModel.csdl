@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLKhachSanDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CHI_TIET_DICH_VU">
+    <Key>
+      <PropertyRef Name="ID_CHI_TIET_DICH_VU" />
+    </Key>
+    <Property Name="ID_CHI_TIET_DICH_VU" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TEN_PHONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ID_DICH_VU" Type="Int32" />
+    <Property Name="SOLUONG" Type="Int32" />
+    <Property Name="THANHTIEN" Type="Int32" />
+    <NavigationProperty Name="DICH_VU" Relationship="Self.FK_CHI_TIET_DICH_VU_DICH_VU" FromRole="CHI_TIET_DICH_VU" ToRole="DICH_VU" />
+    <NavigationProperty Name="CHI_TIET_HOA_DON" Relationship="Self.FK_CHI_TIET_HOA_DON_CHI_TIET_DICH_VU" FromRole="CHI_TIET_DICH_VU" ToRole="CHI_TIET_HOA_DON" />
+  </EntityType>
+  <EntityType Name="CHI_TIET_HOA_DON">
+    <Key>
+      <PropertyRef Name="ID_CHI_TIET_HOA_DON" />
+    </Key>
+    <Property Name="ID_CHI_TIET_HOA_DON" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_DON_DAT_PHONG" Type="Int32" />
+    <Property Name="ID_KHACH_HANG" Type="Int32" />
+    <Property Name="TEN_PHONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ID_CHI_TIET_DICH_VU" Type="Int32" />
+    <Property Name="TIENPHONG" Type="Int32" />
+    <Property Name="TIENDICHVU" Type="Int32" />
+    <Property Name="TONGTIEN" Type="Int32" />
+    <Property Name="NGAYXUATHOADON" Type="DateTime" Precision="0" />
+    <Property Name="MANHANVIEN" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CHI_TIET_DICH_VU" Relationship="Self.FK_CHI_TIET_HOA_DON_CHI_TIET_DICH_VU" FromRole="CHI_TIET_HOA_DON" ToRole="CHI_TIET_DICH_VU" />
+    <NavigationProperty Name="DON_DAT_PHONG" Relationship="Self.FK_CHI_TIET_HOA_DON_DON_DAT_PHONG" FromRole="CHI_TIET_HOA_DON" ToRole="DON_DAT_PHONG" />
+    <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_CHI_TIET_HOA_DON_KHACHHANG" FromRole="CHI_TIET_HOA_DON" ToRole="KHACHHANG" />
+    <NavigationProperty Name="NHANVIEN" Relationship="Self.FK_CHI_TIET_HOA_DON_NHANVIEN" FromRole="CHI_TIET_HOA_DON" ToRole="NHANVIEN" />
+    <NavigationProperty Name="PHONG" Relationship="Self.FK_CHI_TIET_HOA_DON_PHONG" FromRole="CHI_TIET_HOA_DON" ToRole="PHONG" />
+  </EntityType>
+  <EntityType Name="CHI_TIET_VAT_TU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MA_VAT_TU" Type="Int32" />
+    <Property Name="ID_LOAI_PHONG" Type="Int32" />
+    <Property Name="SOLUONG" Type="Int32" />
+    <Property Name="TINHTRANG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LOAI_PHONG" Relationship="Self.FK_CHI_TIET_VAT_TU_LOAI_PHONG" FromRole="CHI_TIET_VAT_TU" ToRole="LOAI_PHONG" />
+    <NavigationProperty Name="VAT_TU" Relationship="Self.FK_CHI_TIET_VAT_TU_VAT_TU" FromRole="CHI_TIET_VAT_TU" ToRole="VAT_TU" />
+  </EntityType>
+  <EntityType Name="CHI_TIEU">
+    <Key>
+      <PropertyRef Name="ID_CHI_TIET_CHI_TIEU" />
+    </Key>
+    <Property Name="ID_CHI_TIET_CHI_TIEU" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENHANG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DONVITINH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="GIA" Type="Int32" />
+    <Property Name="SOLUONG" Type="Int32" />
+    <Property Name="THANHTIEN" Type="Int32" />
+    <Property Name="THOIGIAN" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="DICH_VU">
+    <Key>
+      <PropertyRef Name="ID_DICH_VU" />
+    </Key>
+    <Property Name="ID_DICH_VU" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENDICHVU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GIA" Type="Int32" />
+    <Property Name="TINHTRANG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CHI_TIET_DICH_VU" Relationship="Self.FK_CHI_TIET_DICH_VU_DICH_VU" FromRole="DICH_VU" ToRole="CHI_TIET_DICH_VU" />
+  </EntityType>
+  <EntityType Name="DON_DAT_PHONG">
+    <Key>
+      <PropertyRef Name="ID_DON_DAT_PHONG" />
+    </Key>
+    <Property Name="ID_DON_DAT_PHONG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_KHACH_HANG" Type="Int32" />
+    <Property Name="NGAYDAT" Type="DateTime" Precision="0" />
+    <Property Name="NGAYDEN" Type="DateTime" Precision="0" />
+    <Property Name="NGAYDI" Type="DateTime" Precision="0" />
+    <Property Name="SOLUONGNGUOIDICUNG" Type="Int32" />
+    <Property Name="TRANGTHAI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CHI_TIET_HOA_DON" Relationship="Self.FK_CHI_TIET_HOA_DON_DON_DAT_PHONG" FromRole="DON_DAT_PHONG" ToRole="CHI_TIET_HOA_DON" />
+    <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_DON_DAT_PHONG_KHACHHANG" FromRole="DON_DAT_PHONG" ToRole="KHACHHANG" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="ID_KHACH_HANG" />
+    </Key>
+    <Property Name="ID_KHACH_HANG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HOTEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GIOITINH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYSINH" Type="DateTime" Precision="0" />
+    <Property Name="CMND" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CHI_TIET_HOA_DON" Relationship="Self.FK_CHI_TIET_HOA_DON_KHACHHANG" FromRole="KHACHHANG" ToRole="CHI_TIET_HOA_DON" />
+    <NavigationProperty Name="DON_DAT_PHONG" Relationship="Self.FK_DON_DAT_PHONG_KHACHHANG" FromRole="KHACHHANG" ToRole="DON_DAT_PHONG" />
+  </EntityType>
+  <EntityType Name="LOAI_PHONG">
+    <Key>
+      <PropertyRef Name="ID_LOAI_PHONG" />
+    </Key>
+    <Property Name="ID_LOAI_PHONG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENLOAIPHONG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GIA" Type="Int32" />
+    <Property Name="SOGIUONG" Type="Int32" />
+    <NavigationProperty Name="CHI_TIET_VAT_TU" Relationship="Self.FK_CHI_TIET_VAT_TU_LOAI_PHONG" FromRole="LOAI_PHONG" ToRole="CHI_TIET_VAT_TU" />
+    <NavigationProperty Name="PHONGs" Relationship="Self.FK_PHONG_LOAI_PHONG1" FromRole="LOAI_PHONG" ToRole="PHONG" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANHANVIEN" />
+    </Key>
+    <Property Name="MANHANVIEN" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HOTEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYSINH" Type="DateTime" Precision="0" />
+    <Property Name="GIOITINH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="CHUCVU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LOAITK" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CHI_TIET_HOA_DON" Relationship="Self.FK_CHI_TIET_HOA_DON_NHANVIEN" FromRole="NHANVIEN" ToRole="CHI_TIET_HOA_DON" />
+  </EntityType>
+  <EntityType Name="PHONG">
+    <Key>
+      <PropertyRef Name="TEN_PHONG" />
+    </Key>
+    <Property Name="TEN_PHONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID_LOAIPHONG" Type="Int32" />
+    <Property Name="VITRI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="TRANGTHAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CHI_TIET_HOA_DON" Relationship="Self.FK_CHI_TIET_HOA_DON_PHONG" FromRole="PHONG" ToRole="CHI_TIET_HOA_DON" />
+    <NavigationProperty Name="LOAI_PHONG" Relationship="Self.FK_PHONG_LOAI_PHONG1" FromRole="PHONG" ToRole="LOAI_PHONG" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="VAT_TU">
+    <Key>
+      <PropertyRef Name="MA_VAT_TU" />
+    </Key>
+    <Property Name="MA_VAT_TU" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENVATTU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DONGIA" Type="Int32" />
+    <NavigationProperty Name="CHI_TIET_VAT_TU" Relationship="Self.FK_CHI_TIET_VAT_TU_VAT_TU" FromRole="VAT_TU" ToRole="CHI_TIET_VAT_TU" />
+  </EntityType>
+  <Association Name="FK_CHI_TIET_DICH_VU_DICH_VU">
+    <End Role="DICH_VU" Type="Self.DICH_VU" Multiplicity="0..1" />
+    <End Role="CHI_TIET_DICH_VU" Type="Self.CHI_TIET_DICH_VU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DICH_VU">
+        <PropertyRef Name="ID_DICH_VU" />
+      </Principal>
+      <Dependent Role="CHI_TIET_DICH_VU">
+        <PropertyRef Name="ID_DICH_VU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHI_TIET_HOA_DON_CHI_TIET_DICH_VU">
+    <End Role="CHI_TIET_DICH_VU" Type="Self.CHI_TIET_DICH_VU" Multiplicity="0..1" />
+    <End Role="CHI_TIET_HOA_DON" Type="Self.CHI_TIET_HOA_DON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHI_TIET_DICH_VU">
+        <PropertyRef Name="ID_CHI_TIET_DICH_VU" />
+      </Principal>
+      <Dependent Role="CHI_TIET_HOA_DON">
+        <PropertyRef Name="ID_CHI_TIET_DICH_VU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHI_TIET_HOA_DON_DON_DAT_PHONG">
+    <End Role="DON_DAT_PHONG" Type="Self.DON_DAT_PHONG" Multiplicity="0..1" />
+    <End Role="CHI_TIET_HOA_DON" Type="Self.CHI_TIET_HOA_DON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DON_DAT_PHONG">
+        <PropertyRef Name="ID_DON_DAT_PHONG" />
+      </Principal>
+      <Dependent Role="CHI_TIET_HOA_DON">
+        <PropertyRef Name="ID_DON_DAT_PHONG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHI_TIET_HOA_DON_KHACHHANG">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="CHI_TIET_HOA_DON" Type="Self.CHI_TIET_HOA_DON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="ID_KHACH_HANG" />
+      </Principal>
+      <Dependent Role="CHI_TIET_HOA_DON">
+        <PropertyRef Name="ID_KHACH_HANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHI_TIET_HOA_DON_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="CHI_TIET_HOA_DON" Type="Self.CHI_TIET_HOA_DON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANHANVIEN" />
+      </Principal>
+      <Dependent Role="CHI_TIET_HOA_DON">
+        <PropertyRef Name="MANHANVIEN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHI_TIET_HOA_DON_PHONG">
+    <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
+    <End Role="CHI_TIET_HOA_DON" Type="Self.CHI_TIET_HOA_DON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHONG">
+        <PropertyRef Name="TEN_PHONG" />
+      </Principal>
+      <Dependent Role="CHI_TIET_HOA_DON">
+        <PropertyRef Name="TEN_PHONG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHI_TIET_VAT_TU_LOAI_PHONG">
+    <End Role="LOAI_PHONG" Type="Self.LOAI_PHONG" Multiplicity="0..1" />
+    <End Role="CHI_TIET_VAT_TU" Type="Self.CHI_TIET_VAT_TU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAI_PHONG">
+        <PropertyRef Name="ID_LOAI_PHONG" />
+      </Principal>
+      <Dependent Role="CHI_TIET_VAT_TU">
+        <PropertyRef Name="ID_LOAI_PHONG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHI_TIET_VAT_TU_VAT_TU">
+    <End Role="VAT_TU" Type="Self.VAT_TU" Multiplicity="0..1" />
+    <End Role="CHI_TIET_VAT_TU" Type="Self.CHI_TIET_VAT_TU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VAT_TU">
+        <PropertyRef Name="MA_VAT_TU" />
+      </Principal>
+      <Dependent Role="CHI_TIET_VAT_TU">
+        <PropertyRef Name="MA_VAT_TU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DON_DAT_PHONG_KHACHHANG">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="DON_DAT_PHONG" Type="Self.DON_DAT_PHONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="ID_KHACH_HANG" />
+      </Principal>
+      <Dependent Role="DON_DAT_PHONG">
+        <PropertyRef Name="ID_KHACH_HANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PHONG_LOAI_PHONG1">
+    <End Role="LOAI_PHONG" Type="Self.LOAI_PHONG" Multiplicity="0..1" />
+    <End Role="PHONG" Type="Self.PHONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAI_PHONG">
+        <PropertyRef Name="ID_LOAI_PHONG" />
+      </Principal>
+      <Dependent Role="PHONG">
+        <PropertyRef Name="ID_LOAIPHONG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLKhachSanDBContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CHI_TIET_DICH_VU" EntityType="Self.CHI_TIET_DICH_VU" />
+    <EntitySet Name="CHI_TIET_HOA_DON" EntityType="Self.CHI_TIET_HOA_DON" />
+    <EntitySet Name="CHI_TIET_VAT_TU" EntityType="Self.CHI_TIET_VAT_TU" />
+    <EntitySet Name="CHI_TIEU" EntityType="Self.CHI_TIEU" />
+    <EntitySet Name="DICH_VU" EntityType="Self.DICH_VU" />
+    <EntitySet Name="DON_DAT_PHONG" EntityType="Self.DON_DAT_PHONG" />
+    <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+    <EntitySet Name="LOAI_PHONG" EntityType="Self.LOAI_PHONG" />
+    <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+    <EntitySet Name="PHONGs" EntityType="Self.PHONG" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="VAT_TU" EntityType="Self.VAT_TU" />
+    <AssociationSet Name="FK_CHI_TIET_DICH_VU_DICH_VU" Association="Self.FK_CHI_TIET_DICH_VU_DICH_VU">
+      <End Role="DICH_VU" EntitySet="DICH_VU" />
+      <End Role="CHI_TIET_DICH_VU" EntitySet="CHI_TIET_DICH_VU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHI_TIET_HOA_DON_CHI_TIET_DICH_VU" Association="Self.FK_CHI_TIET_HOA_DON_CHI_TIET_DICH_VU">
+      <End Role="CHI_TIET_DICH_VU" EntitySet="CHI_TIET_DICH_VU" />
+      <End Role="CHI_TIET_HOA_DON" EntitySet="CHI_TIET_HOA_DON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHI_TIET_HOA_DON_DON_DAT_PHONG" Association="Self.FK_CHI_TIET_HOA_DON_DON_DAT_PHONG">
+      <End Role="DON_DAT_PHONG" EntitySet="DON_DAT_PHONG" />
+      <End Role="CHI_TIET_HOA_DON" EntitySet="CHI_TIET_HOA_DON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHI_TIET_HOA_DON_KHACHHANG" Association="Self.FK_CHI_TIET_HOA_DON_KHACHHANG">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="CHI_TIET_HOA_DON" EntitySet="CHI_TIET_HOA_DON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHI_TIET_HOA_DON_NHANVIEN" Association="Self.FK_CHI_TIET_HOA_DON_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="CHI_TIET_HOA_DON" EntitySet="CHI_TIET_HOA_DON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHI_TIET_HOA_DON_PHONG" Association="Self.FK_CHI_TIET_HOA_DON_PHONG">
+      <End Role="PHONG" EntitySet="PHONGs" />
+      <End Role="CHI_TIET_HOA_DON" EntitySet="CHI_TIET_HOA_DON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHI_TIET_VAT_TU_LOAI_PHONG" Association="Self.FK_CHI_TIET_VAT_TU_LOAI_PHONG">
+      <End Role="LOAI_PHONG" EntitySet="LOAI_PHONG" />
+      <End Role="CHI_TIET_VAT_TU" EntitySet="CHI_TIET_VAT_TU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHI_TIET_VAT_TU_VAT_TU" Association="Self.FK_CHI_TIET_VAT_TU_VAT_TU">
+      <End Role="VAT_TU" EntitySet="VAT_TU" />
+      <End Role="CHI_TIET_VAT_TU" EntitySet="CHI_TIET_VAT_TU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DON_DAT_PHONG_KHACHHANG" Association="Self.FK_DON_DAT_PHONG_KHACHHANG">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="DON_DAT_PHONG" EntitySet="DON_DAT_PHONG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PHONG_LOAI_PHONG1" Association="Self.FK_PHONG_LOAI_PHONG1">
+      <End Role="LOAI_PHONG" EntitySet="LOAI_PHONG" />
+      <End Role="PHONG" EntitySet="PHONGs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
